@@ -1,12 +1,12 @@
-import React, { Component, FunctionComponent } from 'react'
-import styled from 'styled-components'
+import React, { Component, FunctionComponent } from 'react';
+import styled from 'styled-components';
 
-type ContainerProps = { 
+type ContainerProps = {
   title: string,
   children: React.ReactNode
-} 
+}
 
-export default function DefaultContainer ({ title, children }: ContainerProps) {
+export default function DefaultContainer({ title, children }: ContainerProps) {
   return (
     <Container>
       <Title>
@@ -15,7 +15,7 @@ export default function DefaultContainer ({ title, children }: ContainerProps) {
 
       {children}
     </Container>
-  )
+  );
 }
 
 const Container = styled.div`
@@ -26,9 +26,9 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
-`
+`;
 
 const Title = styled.h2`
   text-transform: uppercase;
   margin: 0 0 15px 0;  
-`
+`;

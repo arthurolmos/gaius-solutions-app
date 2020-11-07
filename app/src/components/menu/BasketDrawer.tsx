@@ -28,6 +28,8 @@ export default function BasketDrawer(
   const fBasketDiscountTotal = convertPenniesToPounds(basketDiscountTotal)
   const fBasketPayableTotal = convertPenniesToPounds(basketPayableTotal)
 
+  console.log(fBasketPayableTotal)
+
   function showCheckoutAlert() { 
     confirmAlert({
       customUI: ({ onClose }) => {
@@ -35,9 +37,9 @@ export default function BasketDrawer(
           <div className='custom-ui'>
             <h1>Confirm Checkout and clear Basket?</h1>
             <Paragraph>****CHECKOUT***</Paragraph> 
-            <Paragraph>Raw Total: £ ${fBasketPriceTotal}</Paragraph>
-            <Paragraph>Discount Total: £ ${fBasketDiscountTotal}</Paragraph>
-            <Paragraph>Payable Total: £ ${basketPayableTotal}</Paragraph>
+            <Paragraph>Raw Total: £ {fBasketPriceTotal}</Paragraph>
+            <Paragraph>Discount Total: £ {fBasketDiscountTotal}</Paragraph>
+            <Paragraph>Payable Total: £ {fBasketPayableTotal}</Paragraph>
 
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
               <button 
@@ -83,7 +85,7 @@ export default function BasketDrawer(
 
           {basketItems.map(item => { 
             return (
-            <BasketCard item={item} />
+            <BasketCard item={item} key={item.id}/>
             )
           })}
 

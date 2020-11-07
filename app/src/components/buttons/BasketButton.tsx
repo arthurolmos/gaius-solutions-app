@@ -1,40 +1,57 @@
-import React from 'react'
-import {  FaShoppingBasket } from 'react-icons/fa'
-import BasketDrawer from '../menu/BasketDrawer'
-import styled from 'styled-components'
+import React from 'react';
+import { FaShoppingBasket } from 'react-icons/fa';
+import styled from 'styled-components';
+import BasketDrawer from '../menu/BasketDrawer';
+import { BasketContext } from '../../contexts/BasketContext';
 
 export default function BasketButton() {
+  const { basketItems } = React.useContext(BasketContext);
 
-  const [isOpen, setOpen] = React.useState<boolean>(false)
+  const [isOpen, setOpen] = React.useState<boolean>(false);
 
-  const toggleOpen = () => setOpen(!isOpen)
+  const toggleOpen = () => setOpen(!isOpen);
 
   return (
     <Container>
-      <Button 
+      {basketItems.length > 0
+        && (
+        <BasketCounter>
+          {basketItems.length}
+        </BasketCounter>
+        )}
+
+      <Button
         onClick={() => toggleOpen()}
       >
         <FaShoppingBasket
           style={{
-            marginRight: 10
+            marginRight: 10,
           }}
         />
         Basket
       </Button>
-      
-      <BasketDrawer 
+
+      <BasketDrawer
         isOpen={isOpen}
         setOpen={setOpen}
       />
-
     </Container>
-  )
+  );
 }
 
+const BasketCounter = styled.div`
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  border-radius: 50%;
+  padding: 3px 8px;
+  background: green;
+  color: white;
+`;
 
 const Container = styled.div`
   position: relative;
-`
+`;
 
 const Button = styled.button`
   border-radius: 25px;
@@ -57,4 +74,4 @@ const Button = styled.button`
   &:focus { 
     outline: none;
   }
-`
+`;
